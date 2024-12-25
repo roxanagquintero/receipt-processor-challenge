@@ -11,7 +11,7 @@ class ReceiptsController {
    *
    * Example response:
    * {
-   *   "id": "676c1f91ed8928616e21c838"
+   *   "id": "676c2803d65fce0ad0d697d5"
    * }
    *
    * @param {Request} req - The HTTP request object containing the receipt in the body.
@@ -49,8 +49,7 @@ class ReceiptsController {
    */
   async getPoints(req: Request, res: Response) {
     try {
-      const receiptID = req.params.id;
-      console.log('receiptID', receiptID);
+      let receiptID: any = req.params.id;
       // Fetch the receipt from the MongoDB 'receipts' collection
       Receipt.findById(receiptID)
         .then((receipt) => {
@@ -61,7 +60,7 @@ class ReceiptsController {
           }
 
           // Calculate the points based on the receipt attributes
-          const points = 101; //CalculatePoints(receipt);
+          const points = CalculatePoints(receipt);
 
           // Respond with the points
           res.status(200).json({ points: points });

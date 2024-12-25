@@ -46,7 +46,7 @@ router.route('/process').post((req: Request, res: Response) => {
  *         description: The ID of the receipt.
  *         schema:
  *           type: string
- *           example: "676c1f91ed8928616e21c838"
+ *           example: "676c2803d65fce0ad0d697d5"
  *     responses:
  *       200:
  *         description: Points successfully retrieved.
@@ -60,7 +60,6 @@ router.route('/process').post((req: Request, res: Response) => {
  *         description: Internal server error.
  */
 router.route('/:id/points').get((req: Request, res: Response) => {
-  console.log(`Received request for ID: ${req}`);
   receiptsController.getPoints(req, res);
 });
 
