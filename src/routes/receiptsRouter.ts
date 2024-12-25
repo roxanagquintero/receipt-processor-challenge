@@ -59,7 +59,7 @@ router.route('/process').post((req: Request, res: Response) => {
  *       500:
  *         description: Internal server error.
  */
-router.route('/{id}/points').get((req: Request, res: Response) => {
+router.route('/:id/points').get((req: Request, res: Response) => {
   console.log(`Received request for ID: ${req}`);
   receiptsController.getPoints(req, res);
 });
