@@ -26,7 +26,6 @@ export function CalculatePoints(receipt: Receipt) {
     getPointsForTime(receipt.purchaseTime) +
     getPointsTotalMultiple25(receipt.total) +
     getPointsByIndividualItemMultipleOf3(receipt.retailer, receipt.items);
-  console.log('CalculatePoints final val', points);
   return points;
 }
 
@@ -44,7 +43,6 @@ function getPointsAlphaNumeric(retailer: any) {
     .split('')
     .filter((c: any) => /^[A-Za-z0-9]$/.test(c));
   const count = alphanumericChars.length;
-  console.log('getPointsAlphaNumeric--->', count);
   if (count > 0) {
     //1 Non-alphanumeric character = 1 point
     return count;
@@ -65,10 +63,8 @@ function getPointsRoundDollarAmount(total: any) {
   //need to test
   if (Number.isInteger(total)) {
     //round dollar amount = 50 points
-    console.log('getPointsRoundDollarAmount--->', 50);
     return 50;
   } else {
-    console.log('getPointsRoundDollarAmount--->', 0);
     return 0;
   }
 }
@@ -83,10 +79,8 @@ function getPointsRoundDollarAmount(total: any) {
  */
 function getPointsTotalMultiple25(totalPrice: number): number {
   if (totalPrice % 0.25 === 0) {
-    console.log('getPointsTotalMultiple25--->', 25);
     return 25; // Return 25 points
   }
-  console.log('getPointsTotalMultiple25--->', 0);
   return 0; // Return 0 points otherwise
 }
 
@@ -102,10 +96,8 @@ function getPointsByItemPairs(items: Array<any>) {
   if (items.length > 1) {
     //2 pairs @ 5 points each item
     const pairsNum = Math.floor(items.length / 2);
-    console.log('getPointsByItemPairs--->', pairsNum * 5);
     return pairsNum * 5;
   } else {
-    console.log('getPointsByItemPairs--->', 0);
     return 0;
   }
 }
@@ -134,10 +126,8 @@ function getPointsByIndividualItemMultipleOf3(
         // Calculate points: 20% of price, rounded up
         const rawPoints = item.price * 0.2;
         totalPoints = totalPoints + Math.ceil(rawPoints);
-        console.log('totalPoints', totalPoints);
       }
     });
-    console.log('getPointsByIndividualItemMultipleOf3--->', totalPoints);
     return totalPoints;
   }
 }
@@ -155,10 +145,8 @@ function getPointsOddDay(purchaseDate: Date) {
   const isOddDay = dateObj.getUTCDate() % 2 !== 0;
   if (isOddDay === true) {
     //purchase day is odd = 6 points
-    console.log('getPointsOddDay', 6);
     return 6;
   } else {
-    console.log('getPointsOddDay', 0);
     return 0;
   }
 }
@@ -184,9 +172,7 @@ function getPointsForTime(currentTime: any): number {
 
   // Check if the current time is within the range
   if (isWithinInterval(receiptTime, { start: startDate, end: endDate })) {
-    console.log('getPointsForTime', 10);
     return 10; // Award 10 points
   }
-  console.log('getPointsForTime', 0);
   return 0; // No points if outside the range
 }

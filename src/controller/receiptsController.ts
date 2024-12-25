@@ -53,7 +53,6 @@ class ReceiptsController {
       // Fetch the receipt from the MongoDB 'receipts' collection
       Receipt.findById(receiptID)
         .then((receipt) => {
-          console.log('receipt', receipt);
           // Check if the receipt exists
           if (!receipt) {
             return res.status(404).json({ error: 'Receipt not found' });
