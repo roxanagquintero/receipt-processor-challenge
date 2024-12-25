@@ -1,1 +1,1 @@
-# backend-template
+# receipt-processor-challenge
