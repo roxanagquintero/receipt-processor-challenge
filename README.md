@@ -93,15 +93,7 @@ This is an implementation of the **Receipt Processor Challenge**, a project crea
    npm install
    ```
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory with the following content:
-
-   ```env
-   PORT=4000
-   MONGO_URI=mongodb+srv://invitedUser:invitedUser123454321@roxanatestcluster.t1xxp.mongodb.net/personalprojects?retryWrites=true&w=majority
-   ```
-
-4. Start the server:
+3. Start the server:
    ```bash
    npm run dev
    ```
