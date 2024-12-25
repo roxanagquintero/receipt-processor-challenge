@@ -178,11 +178,12 @@ function getPointsForTime(currentTime: any): number {
 
   // Parse the times into date objects (date-fns handles AM/PM parsing)
   const today = new Date(); // Use today's date for context
+  const receiptTime = parse(currentTime, 'HH:mm', today);
   const startDate = parse(startTime, 'h:mma', today);
   const endDate = parse(endTime, 'h:mma', today);
 
   // Check if the current time is within the range
-  if (isWithinInterval(currentTime, { start: startDate, end: endDate })) {
+  if (isWithinInterval(receiptTime, { start: startDate, end: endDate })) {
     console.log('getPointsForTime', 10);
     return 10; // Award 10 points
   }
