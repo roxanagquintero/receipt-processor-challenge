@@ -152,7 +152,7 @@ function getPointsByIndividualItemMultipleOf3(
  */
 function getPointsOddDay(purchaseDate: Date) {
   const dateObj = new Date(purchaseDate);
-  const isOddDay = dateObj.getDate() % 2 !== 0;
+  const isOddDay = dateObj.getUTCDate() % 2 !== 0;
   if (isOddDay === true) {
     //purchase day is odd = 6 points
     console.log('getPointsOddDay', 6);
