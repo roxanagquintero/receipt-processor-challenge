@@ -1,23 +1,86 @@
 # **Receipt Processor Challenge**
 
-This is an implementation of the **Receipt Processor Challenge**, a project created to process receipt data and calculate points based on specific rules. The project includes a REST API with endpoints to process receipts and fetch calculated points. Swagger documentation and MongoDB were implemented as optional enhancements to demonstrate project extensibility and best practices.
+## **Description**
+
+This project is an implementation of the **Receipt Processor Challenge**, designed to process receipt data and calculate points based on predefined rules. The system includes:
+
+- A REST API for processing receipts and retrieving calculated points.
+- MongoDB for persistent data storage.
+- Swagger documentation for exploring and testing endpoints.
+
+Optional enhancements, including MongoDB and Swagger, have been added for testing purposes.
 
 ---
 
 ## **Features**
 
-- Process receipts and store them in a database (MongoDB used as the database).
-- Fetch calculated points for a receipt by its ID.
-- Swagger documentation for easy API exploration and testing.
+- Process and store receipts in MongoDB.
+- Retrieve calculated points for a receipt by its ID.
+- API documentation with Swagger for seamless exploration and testing.
 
 ---
 
-## **Technologies Used**
+## **Quick Start**
 
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (via Mongoose)
-- **API Documentation**: Swagger (via `swagger-jsdoc` and `swagger-ui-express`)
-- **Environment Management**: dotenv
+### **With Docker**
+
+No need to install Node.js or MongoDB manually. Use Docker to quickly set up the application and its dependencies.
+
+1. **Build the Docker Image**:
+
+   ```bash
+   docker-compose build
+   ```
+
+2. **Start the Application**:
+
+   ```bash
+   docker-compose up
+   ```
+
+3. **Access the Application**:
+
+   - API: `http://localhost:4000`
+   - Swagger UI: `http://localhost:4000/api-docs`
+
+4. **Stop the Containers**:
+   ```bash
+   docker-compose down
+   ```
+
+---
+
+### **Without Docker**
+
+If you prefer to run the project manually:
+
+1. **Prerequisites**:
+
+   - Install Node.js and npm.
+   - Set up a MongoDB instance (local or cloud).
+
+2. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/roxanagquintero/receipt-processor-challenge.git
+   cd receipt-processor-challenge
+   ```
+
+3. **Install Dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the Application**:
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Access the Application**:
+   - API: `http://localhost:4000`
+   - Swagger UI: `http://localhost:4000/api-docs`
 
 ---
 
@@ -27,7 +90,7 @@ This is an implementation of the **Receipt Processor Challenge**, a project crea
 
 **Endpoint**: `POST /receipts/process`
 
-**Description**: Submits a receipt for processing and returns a generated ID for the receipt.
+**Description**: Submits a receipt for processing and returns a unique receipt ID.
 
 **Request Body**:
 
@@ -56,7 +119,7 @@ This is an implementation of the **Receipt Processor Challenge**, a project crea
 
 **Endpoint**: `GET /receipts/{id}/points`
 
-**Description**: Fetches the points awarded for a specific receipt by its ID.
+**Description**: Retrieves the points awarded for a specific receipt by its ID.
 
 **Response**:
 
@@ -71,40 +134,11 @@ This is an implementation of the **Receipt Processor Challenge**, a project crea
 
 ---
 
-## **Setup Instructions**
+## **API Documentation**
 
-### **Prerequisites**
+Swagger UI is available for exploring and testing the API.
 
-- Node.js and npm installed on your system.
-- MongoDB Atlas or a local MongoDB instance (optional if you choose not to use a database).
-
-### **Installation**
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/roxanagquintero/receipt-processor-challenge.git
-   cd receipt-processor-challenge
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the server:
-   ```bash
-   npm run dev
-   ```
-
----
-
-## **Swagger Documentation**
-
-The project includes Swagger documentation for exploring and testing the API endpoints.
-
-**Access the Swagger UI**:
+**Access Swagger UI**:
 
 ```url
 http://localhost:4000/api-docs
@@ -112,45 +146,25 @@ http://localhost:4000/api-docs
 
 ---
 
-## **Optional Enhancements**
+## **Technologies Used**
 
-The following features were implemented as optional enhancements for the challenge:
-
-- **MongoDB Integration**: MongoDB was used to store and retrieve receipts for persistent data handling.
-- **Swagger Documentation**: Swagger UI was added to simplify API exploration and provide an interactive way to test endpoints.
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (via Mongoose)
+- **API Documentation**: Swagger (via `swagger-jsdoc` and `swagger-ui-express`)
+- **Environment Management**: dotenv
+- **Containerization**: Docker and Docker Compose
 
 ---
 
 ## **Testing the API**
 
-1. Use **Swagger UI** to test the API directly in your browser.
-2. Use tools like **Postman** or **curl** to send requests to the endpoints.
-
-### Example Commands:
-
-**Processing a Receipt**:
-
-```bash
-curl -X POST http://localhost:4000/receipts/process \
--H "Content-Type: application/json" \
--d '{
-  "retailer": "Target",
-  "purchaseDate": "2022-01-01",
-  "purchaseTime": "13:01",
-  "items": [
-    { "shortDescription": "Mountain Dew 12PK", "price": "6.49" },
-    { "shortDescription": "Emils Cheese Pizza", "price": "12.25" }
-  ],
-  "total": "35.35"
-}'
-```
-
-**Fetching Points**:
-
-```bash
-curl http://localhost:4000/receipts/64a12345b67890c123456def/points
-```
+Use Swagger UI or Postman to test the endpoints.
 
 ---
 
-If you have any questions or issues, feel free to contact me. Thank you for reviewing this project!
+## **Optional Enhancements**
+
+- **MongoDB Integration**: Receipts are stored in a MongoDB database for persistent handling.
+- **Swagger Documentation**: Added for interactive API testing and exploration.
+
+---
